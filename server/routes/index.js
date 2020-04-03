@@ -38,11 +38,6 @@ router.get('/services', (req, res, next) =>
     controllers.displayServices(res);
 });
 
-/* GET login page */
-router.get('/login', (req, res, next) =>
-  {
-    controllers.displayLogin(res);
-});
 
 
 
