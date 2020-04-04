@@ -15,7 +15,7 @@ class Contact
 
     function DisplayContactContent()
     {
-        document.title = "WEBD6201 - Contact Us";
+        document.title = "Contact Me";
         function clearForm()
         {
             //document.getElementById("contactForm").reset();
