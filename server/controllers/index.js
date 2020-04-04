@@ -1,3 +1,9 @@
+/** 
+File Name: index.js
+Name: Jarod Colley
+StudentID: 100704994
+Date: April 4th 2020
+*/
 /* CONTROLLERS SECTION */
 module.exports.displayHome = (res) =>
 {

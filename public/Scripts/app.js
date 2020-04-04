@@ -1,3 +1,9 @@
+/** 
+File Name: app.js
+Name: Jarod Colley
+StudentID: 100704994
+Date: April 4th 2020
+*/
 class Contact
 {
     constructor(contactName = "", emailAddress = "", contactNumber = "", contactMessage = "")
