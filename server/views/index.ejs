@@ -34,6 +34,14 @@ Date: April 4th 2020
     else if(title == 'Services') { %>
 
 <%- include ./content/services.ejs %>
+
+<% } else if(title == 'Login') { %>
+
+    <%- include ./content/login.ejs %>
+    
+    <% } else if(title == 'Register') { %>
+    
+    <%- include ./content/register.ejs %>
         
 <% }%>
 

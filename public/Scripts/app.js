@@ -2,7 +2,7 @@
 File Name: app.js
 Name: Jarod Colley
 StudentID: 100704994
-Date: April 4th 2020
+Date: April 15th 2020
 */
 class Contact
 {
@@ -21,7 +21,7 @@ class Contact
 
     function DisplayContactContent()
     {
-        document.title = "Contact Me";
+        document.title = "Contact me";
         function clearForm()
         {
             //document.getElementById("contactForm").reset();
@@ -138,15 +138,42 @@ class Contact
         });
     }
 
+    function DisplayContactList()
+    {
+        document.title = "Contact List";
+        let deleteButtons = document.getElementsByClassName("btn btn-danger");
+
+        for (const button of deleteButtons) {
+            button.addEventListener("click", (e) =>
+            {
+                if(!confirm("Are You Sure?"))
+                {
+                    e.preventDefault();
+                    /* refresh contact-list*/
+                    window.location.assign("/contact-list");
+                }
+            });
+        }
+
+
+       
+    }
+
     function Start()
     {
         console.log("App Started...");
         let name = window.location.pathname;
         let pageName = name.substring(1);
+
+        console.log(pageName);
+
         switch(pageName)
         {
             case 'contact':
                 DisplayContactContent();
+                break;
+            case 'contact-list':
+                DisplayContactList();
                 break;
         }
     }

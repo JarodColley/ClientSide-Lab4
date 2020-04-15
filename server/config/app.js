@@ -2,7 +2,7 @@
 File Name: app.js
 Name: Jarod Colley
 StudentID: 100704994
-Date: April 4th 2020
+Date: April 15th 2020
 */
 // modules for node and express
 let createError = require('http-errors');
@@ -10,6 +10,14 @@ let express = require('express');
 let path = require('path');
 let cookieParser = require('cookie-parser');
 let logger = require('morgan');
+
+// modules for authentication
+let session = require('express-session');
+let passport = require('passport');
+let passportLocal = require('passport-local');
+let localStrategy = passportLocal.Strategy;
+let flash = require('connect-flash');
+
 
 // database setup
 let mongoose = require('mongoose');
@@ -42,6 +50,32 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../../public')));
+
+//setup express-session
+app.use(session({
+  secret: 'SomeSecret',
+  saveUninitialized: false,
+  resave: false
+}));
+
+// initialize flash
+app.use(flash());
+
+// initialize passport
+app.use(passport.initialize());
+app.use(passport.session());
+
+// passport user configuration
+let userModel = require('../models/user');
+let User = userModel.User; // create an alias for the User object
+
+// implement a user authentication strategy
+passport.use(User.createStrategy());
+
+// serialize and deserialize the user info
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
 
 app.use('/', indexRouter);
 app.use('/contact-list', contactRouter);
